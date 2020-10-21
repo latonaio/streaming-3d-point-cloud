@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pointcloud;
+
+message PointRequest{
+}
+
+message PointReply{
+	repeated bytes ndarray_pcd = 1;
+	string timestamp = 2;
+}
+
+// responce server
+service MainServer{
+	rpc get_point_cloud (PointRequest) returns (stream PointReply) {}
+}
